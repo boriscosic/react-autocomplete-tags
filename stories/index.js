@@ -15,6 +15,9 @@ import Tags from './Tags/Tags'
 import LimitTags from './LimitTags/LimitTags'
 import SaveOnBlur from './SaveOnBlur/SaveOnBlur'
 import Placeholder from './Placeholder/Placeholder'
+import FocusSuggestions from './FocusSuggestions/FocusSuggestions'
+import InputSuggestions from './InputSuggestions/InputSuggestions'
+import FilterSuggestions from './FilterSuggestions/FilterSuggestions'
 
 storiesOf('Events', module)
 	.add('Basic', () => <Basic />)
@@ -29,6 +32,9 @@ storiesOf('Events', module)
 storiesOf('Options', module)
 	.add('Add placeholder', () => <Placeholder />)
 	.add('With suggestions', () => <Suggestions />)
+	.add('Suggestions on focus', () => <FocusSuggestions />)
+	.add('Input suggestions', () => <InputSuggestions />)
+	// .add('Filter suggestions', () => <FilterSuggestions />)
 	.add('With initial tags', () => <Tags />)
 	.add('Limit in 2 tags', () => <LimitTags />)
 	.add('Add tag on blur', () => <SaveOnBlur />)

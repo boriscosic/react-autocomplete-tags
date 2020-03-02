@@ -39,6 +39,8 @@ export default class Autocomplete extends Component {
 		loaderPosition: PropTypes.oneOf(['top', 'bottom']),
 		children: PropTypes.node,
 		saveOnBlur: PropTypes.bool,
+		suggestOnFocus: PropTypes.bool,
+		inputSuggestions: PropTypes.bool,
 		onKeyUp: PropTypes.func,
 		onKeyDown: PropTypes.func,
 		onAdd: PropTypes.func,
@@ -47,7 +49,7 @@ export default class Autocomplete extends Component {
 		onBlur: PropTypes.func,
 		onChange: PropTypes.func,
 		placeholder: PropTypes.string,
-		enterKeys: PropTypes.arrayOf(PropTypes.string),
+		enterKeys: PropTypes.arrayOf(PropTypes.string)
 	}
 
 	static defaultProps = {
@@ -61,6 +63,8 @@ export default class Autocomplete extends Component {
 		enterKeys: [],
 		children: <input />,
 		saveOnBlur: false,
+		suggestOnFocus: false,
+		inputSuggestions: false,
 		placeholder: '',
 		onKeyUp: ()=>{},
 		onKeyDown: ()=>{},
@@ -68,7 +72,7 @@ export default class Autocomplete extends Component {
 		onDelete: ()=>{},
 		onFocus: ()=>{},
 		onBlur: ()=>{},
-		onChange: ()=>{},
+		onChange: ()=>{}
 	}
 
 	state = {
@@ -209,6 +213,10 @@ export default class Autocomplete extends Component {
 
 	_onFocus = () => {
 		this.setState({ active: true })
+		if (this.props.suggestOnFocus) {
+			this._restoreSuggestions()
+		}
+
 		this.props.onFocus()
 	}
 	
@@ -243,7 +251,12 @@ export default class Autocomplete extends Component {
 	 */
 	onClickSuggestion = idx => {
 		const {label, value} = this.state.suggestions[idx]
-		this._addTag(label, value)
+		
+		if (this.props.inputSuggestions) {
+			this.setState({ value })
+		} else {
+			this._addTag(label, value)
+		}
 	}
 
 	/* On enter we add a tag in state.tags */

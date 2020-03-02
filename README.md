@@ -72,6 +72,8 @@ class Example extends Component {
 | [`limitTags`](#limitTagsProp) | Number | null | Maximum allowed tags. |
 | [`allowCreateTag`](#allowCreateTagProp) | Boolean | true | If user can create tags without restritions. |
 | [`saveOnBlur`](#saveOnBlurProp) | Boolean | false | If component must add current input value on blur. |
+| [`suggestOnFocus`](#suggestOnFocus) | Boolean | false | Show suggestion on input focus. |
+| [`inputSuggestion`](#inputSuggestion) | Boolean | false | Clicking suggestions moves them into input field. |
 | [`delay`](#delayProp) | Number | null | Delay in onChange event after user changes. |
 | [`onKeyUp`](#onKeyUpProps) | Function | ()=>{} | Callback for key up event. |
 | [`onKeyDown`](#onKeyUpProps) | Function | ()=>{} | Callback for key down event. |
